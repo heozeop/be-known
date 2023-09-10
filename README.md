@@ -6,9 +6,17 @@
 ## CSS
 ## Concepts
 ### PWA
+# Frameworks
+## Node
+### NestJS
+### NextJS
 # Infra
 ## AWS
-
+## GCP
 # Computer Science
 ## OS
+## Design Pattern
 ## Network
+## Database
+## Data Structure
+## Algorithm
