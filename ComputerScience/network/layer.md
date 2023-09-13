@@ -35,6 +35,7 @@
         1. ACK: 클라 Time wait  서버 close
     - 얼만큼 기다리나
         1. 서버의 Last ACK FIN
+            ? 얼마나 기다림?
         1. 클라의 Time wait
             - 운영체제 별로 다르다고 한다.
 
