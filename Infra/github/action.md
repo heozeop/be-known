@@ -94,6 +94,65 @@
 - `*` 통해서 object destruct 가능
 
 
+## context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#about-contexts)
+- workflow의 실행 맥락
+    - variables, runner environments, jobs, steps 등
+- 각 context는 속성을 가지고 있는 object
+- expression 에서 접근 가능
+### vs default variables
+- default variables는 runner에만 조재
+- context는 대부분 어디서든 쓸 수 있음
+### Context availability
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#about-contexts)
+- context가 사용될 수 있는 위치/조건이 있음
+### `github` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
+- workflow가 동작하는 것과 트리거의 정보를 담고 있음
+- 대부분은 EnvironmentVariable로도 접근 가능
+### `env` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#env-context)
+- workflow, job, step에서 정의한 variables를 담고 있는 context
+- runner process로 부터 상속받는 variable은 담고 있지 않음 
+### `vars` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#vars-context)
+- organization, repository, environment 레벨에서 설정한 variables 참조 컨텍스트
+- 값이 없으면 빈 string 사용됨
+### `job` context
+- [ref](https://maily.so/secondbrain/posts/cd2ab170)
+- 아래 나올 `jobs`와 다른 것
+- 현재 도는 중인 `job`과 관련된 정보를 담고 있음.
+### `jobs` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#jobs-context)
+- reusable workflow에서만 사용 가능
+### `steps` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context)
+- 현재 job에 속한 step에 대한 정보들
+### `runner` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#runner-context)
+- 현재 job이 돌고 있는 runner에 대한 정보를 담고 있음
+### `secrets` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#secrets-context)
+- workflow에서 사용이 허용된 비밀정보들을 담고 있는 context
+- composite 타입의 action에서는 secrets context 접근이 불가능
+    - 쓰고 싶으면 [참조](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+### `strategy` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#strategy-context)
+- matrix execution 관련된 context를 담고 있음
+    - 여러 환경에서 돌리는 걸 matrics execution이라 함.
+    - fail-fast, job-index, job-total, max-parallel 등
+### `matrix` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#matrix-context)
+- matrix 관련 context 정보 담고 있음
+    - matrix 속성 관련 내용
+### `needs` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#needs-context)
+- dependency로 명시된 job들의 output 등을 참조하는 context
+### `inputs` context
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#inputs-context)
+- action, reusable workflow 등에 넘겨진 input 속성을 담고 있는 context
+
+
 ## trigger
 ### watch
 - [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#watch)
