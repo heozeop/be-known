@@ -43,3 +43,29 @@
 ### conditional keyword
 - `if ${{ expression }}`
 - 자동으로 expression으로 처리해주는게 있긴함.
+
+## trigger
+### watch
+- [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#watch)
+- star 달리면 trigger
+### workflow_call
+- [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_call)
+- 워크 플로우를 동작하게 호출 할 수 있음.
+### workflow_dispatch
+- [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch)
+- 직접 trigger하는 방식
+    - default branch를 기준으로 workflow 동작함.
+- `inputs` 과 `ref`를 넘길 수 있음
+    - `inputs`는 10개 까지 가능 (옵션은 더 쓸 수 있는 것으로 보임)
+    - `inputs`의 최대 payload size는 65,535(2^16)
+### workflow_run
+- [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run)
+- 3개의 호출 방식 상태가 존재
+    - completed / requested / in_progress
+- default branch를 기준으로 동작함
+- 최대 3개 chain만 가능함.
+
+## 효율적인 도구
+### actions/checkout
+- [ref](https://github.com/actions/checkout)
+- 현재(24.07.17) 기준 
