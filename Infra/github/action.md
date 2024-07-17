@@ -135,7 +135,6 @@
 - [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#secrets-context)
 - workflow에서 사용이 허용된 비밀정보들을 담고 있는 context
 - composite 타입의 action에서는 secrets context 접근이 불가능
-    - 쓰고 싶으면 [참조](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 ### `strategy` context
 - [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#strategy-context)
 - matrix execution 관련된 context를 담고 있음
