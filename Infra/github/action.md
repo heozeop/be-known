@@ -46,6 +46,54 @@
 - `if ${{ expression }}`
 - 자동으로 expression으로 처리해주는게 있긴함.
 
+## Expression
+### literal
+- boolean: true / false
+- null: null
+- number: JSON이 지원하는 number 타입
+- string: ''로 감싸지거나 그냥 쓰여진 string
+    - ""로 감싸면 터짐
+### falsy value
+- `false, 0, -0, "", '', null`) => false
+### operator
+- [ref](https://docs.github.com/en/actions/learn-github-actions/expressions#operators)
+- 일반 비교/논리 연산자 생각하면 됨
+- 비교 연산 시 string의 case는 무시함.
+- 숫자 연산에서 string 바꿀때 [fromJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson) 함수 사용할 수 있음
+- NaN은 항상 true
+### Functions
+- [ref](https://docs.github.com/en/actions/learn-github-actions/expressions#functions)
+1. [contains](https://docs.github.com/en/actions/learn-github-actions/expressions#functions)
+    - `constains(search, item)`
+        - true: `search`에 `item`있는 경우
+            - `search`가 array면 `item`은 element, string이면 substring
+        - false: true가 아닐 경우
+1. [startsWith](https://docs.github.com/en/actions/learn-github-actions/expressions#startswith)
+1. [endsWith](https://docs.github.com/en/actions/learn-github-actions/expressions#endswith)
+1. [format](https://docs.github.com/en/actions/learn-github-actions/expressions#format
+    - `{index}` => 데이터 치환
+1. [join](https://docs.github.com/en/actions/learn-github-actions/expressions#format)
+    - `join(array, optionalSeperator)`, optionalSeperator는 기본값 `,`을 가짐
+1. [toJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#format)
+1. [fromJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#format)
+1. [hashFiles](https://docs.github.com/en/actions/learn-github-actions/expressions#format)
+    - path 패턴에 맞는 파일의 hash 패턴을 짜냄, SHA-256 해시임.
+    - ,를 이용해서 여러개 hash pattern 설정 가능
+### Status check functions
+- [ref](https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions)
+1. [success](https://docs.github.com/en/actions/learn-github-actions/expressions#success)
+    - 이전 step이 모두 성공한 경우 true
+1. [always](https://docs.github.com/en/actions/learn-github-actions/expressions#always)
+    - 항상 true
+1. [cancelled](https://docs.github.com/en/actions/learn-github-actions/expressions#cancelled)
+    - workflow가 cancel된 경우 true
+1. [failure](https://docs.github.com/en/actions/learn-github-actions/expressions#failure)
+    - 이전 step/job 중 하나라도 실패한 경우 true
+### Object Filter
+- [ref](https://docs.github.com/en/actions/learn-github-actions/expressions#failure)
+- `*` 통해서 object destruct 가능
+
+
 ## trigger
 ### watch
 - [ref](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#watch)
