@@ -119,7 +119,7 @@
 - organization, repository, environment 레벨에서 설정한 variables 참조 컨텍스트
 - 값이 없으면 빈 string 사용됨
 ### `job` context
-- [ref](https://maily.so/secondbrain/posts/cd2ab170)
+- [ref](https://docs.github.com/en/actions/learn-github-actions/contexts#job-context)
 - 아래 나올 `jobs`와 다른 것
 - 현재 도는 중인 `job`과 관련된 정보를 담고 있음.
 ### `jobs` context
