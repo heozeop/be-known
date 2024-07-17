@@ -1,4 +1,6 @@
-[ref](https://learn.microsoft.com/en-us/collections/n5p4a5z7keznp5)
+학습 자료
+- [MS learn](https://learn.microsoft.com/en-us/collections/n5p4a5z7keznp5)
+- [Github Docs](https://docs.github.com/en/actions)
 
 # Github Action
 소프트웨어 배포 작업을 자동화하는 packaged script
