@@ -29,7 +29,7 @@
     - Res 쓸때는 라이브러리의 타입을 가지고 있어야 함.
 
 
-#### 응답 BestPractice
+#### BestPractice
 ##### 응답 처리 방식
 1. Standard
     - 응답 주면 NestJS가 알아서 직렬화
@@ -38,3 +38,39 @@
     - express등의 응답 객체를 직접 사용하는 방법
     - header만 지정하는 경우 등 1번 방식을 함께 사용하고 싶으면 `@Res({passthrough: true})`와 같이 처리 해야 함.]
         - [ref](https://docs.nestjs.com/controllers#request-object)
+
+### Provider
+module애서 Provider로 정의된 plain Javascript Class를 의미한다.
+
+
+#### Decorator
+- Injectable
+    - class가 Nest IoC 컨테이너에 의해 처리될 수 있음을 마크함.
+    - ```typescript
+      @Controller('something')
+      export class SomethingController {
+        constructor(private readonly somethingService: SomethingService) {}
+      }
+      ```
+
+#### BestPractice
+##### 참조시 private readonly 사용하기
+- private: 내부에서만 참조한다는 것을 명시(외부로 드러나지 않음)
+- readonly: reference 변경을 참조 내부에서 하지 않음을 명시함.
+
+#### 개념들
+##### Custom Provider
+- [ref](https://docs.nestjs.com/fundamentals/custom-providers)
+- Inversion of Control(IoC)를 하는 방법이 존재함.
+
+##### Optional Provider
+- ```typescript
+    @Injectable()
+    export class HttpService<T> {
+    constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) {}
+    }
+  ```
+- 그냥 기본값 사용해도 되는 상황인 경우
+
+##### Property base injection
+- constructor에서 하는게 아니라 property에 decorator 붙여서 처리하기
