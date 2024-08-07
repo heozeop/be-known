@@ -29,8 +29,8 @@
     - Res 쓸때는 라이브러리의 타입을 가지고 있어야 함.
 
 
-### 응답 BestPractice
-#### 응답 처리 방식
+#### 응답 BestPractice
+##### 응답 처리 방식
 1. Standard
     - 응답 주면 NestJS가 알아서 직렬화
     - HttpCode 지정
