@@ -74,3 +74,32 @@ module애서 Provider로 정의된 plain Javascript Class를 의미한다.
 
 ##### Property base injection
 - constructor에서 하는게 아니라 property에 decorator 붙여서 처리하기
+
+### Module
+`Module` decorator가 붙은 클래스
+
+#### Decorator
+- Module
+    - Nest가 application architecture를 구성하는데 필요한 정보를 줌
+
+#### 개념
+##### Feature Module
+- export된 provider를 module import를 통해 받는 방법
+
+##### shared modules
+1. 기본적으로 singleton이라 돌려씀
+
+##### module re-exporting
+- module을 export해서 module에서 선언된 exports들 참조가능
+
+##### Dependency Injection
+- 기본적으로는 모듈 호출될 때 됨
+- circular dependency 존재하면 터짐
+
+##### global module
+- Global 데코레이터 이용해서 module을 global scope로 등록
+- 1번만 등록 되어야 함. 보통 root에서 해줌.
+
+#### Dynamic module
+- [ref](https://docs.nestjs.com/fundamentals/dynamic-modules)
+- module 선언을 다이나믹(?)하게 할 수 있도록 만듦
