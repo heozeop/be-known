@@ -103,3 +103,30 @@ module애서 Provider로 정의된 plain Javascript Class를 의미한다.
 #### Dynamic module
 - [ref](https://docs.nestjs.com/fundamentals/dynamic-modules)
 - module 선언을 다이나믹(?)하게 할 수 있도록 만듦
+
+### Middleware
+route handler 앞단에서 request/response 처리하는 함수
+- 기본적으로는 express의 것과 동일
+    - code 수행
+    - request/response 처리
+    - 다음 middleware 호출
+
+#### 적용 방법
+- [ref](https://docs.nestjs.com/fundamentals/dynamic-modules) / 참조 필수!
+- NestMiddleware interface 구현
+- @Injectable 데코레이터 추가 해야 함.
+- DI 가능
+- route에 사용할 수 있는 [wildcard 규칙](https://docs.nestjs.com/middleware#route-wildcards)
+
+#### [MiddlewareConsumer](https://docs.nestjs.com/middleware#middleware-consumer)
+- fluent style로 작업을 할 수 있는 helper 클래스
+- apply하면 한개/여러개 등록 가능
+- forRoute에는 한개/여러개/RouteInfo 클래스/controller 클래스 넣을 수 있음
+- exclude하면 path, method 제외 가능
+
+#### [functional middleware](https://docs.nestjs.com/middleware#functional-middleware)
+- 단순한거는 middleware function으로 설정 가능
+- apply로 추가 가능
+
+#### [global middleware](https://docs.nestjs.com/middleware#global-middleware)
+- nest app create할 때, use에 추가해주면 됨.
