@@ -130,3 +130,21 @@ route handler 앞단에서 request/response 처리하는 함수
 
 #### [global middleware](https://docs.nestjs.com/middleware#global-middleware)
 - nest app create할 때, use에 추가해주면 됨.
+
+### ExceptionFilter
+unhandled exception 다뤄주는 layer
+- http-errors 라이브러리를 일부 지원함
+    - statusCode와 message가지고 있는 Object 던지면 잘 잡아줌
+#### HttpException
+- nest에서 만든 익셉션
+- option에 cause로 error 넘기면 응답으로는 안나가고 로깅만 해줌 -> message만 나감
+
+#### Exception Filters
+- @Catch로 마킹, ExceptionFilter implement해서 선언
+- 응답 변형이 가능한데, 이때 fastify는 응답 하는 함수가 다른 것 유의
+- @UseFilters로 binding 가능
+    - 이때 instance로 생성해서 넘기는 것도 가능한데, 메모리 관점에서 낭비가 있을 수 있으니 DI하는 것 고려 필요
+- useGlobalFilters
+    - gateway나 hybrid application에서는 동작 안함
+    - DI도 안됨, 외부 맥락으로 주입 됨.
+        - DI 하고 싶으면 `APP_FILTER`라는 provider로 `AppModul`에서 주입할 필요가 있음
