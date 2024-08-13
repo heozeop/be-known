@@ -148,3 +148,44 @@ unhandled exception 다뤄주는 layer
     - gateway나 hybrid application에서는 동작 안함
     - DI도 안됨, 외부 맥락으로 주입 됨.
         - DI 하고 싶으면 `APP_FILTER`라는 provider로 `AppModul`에서 주입할 필요가 있음
+
+### Pipe
+`PipeTransform<T,R>` interface를 구현하는 @Injectable 클래스
+#### 일반적인 usecase
+1. transformation
+1. validation
+
+#### 동작
+메소드 호출 직전에 끼어들어서 pipe 동작을 수행
+이때 대상이 되는 method는 controller route handler다.
+
+- pipe에서 터지면 exception filter가 잡을 수 있다.
+- [built in pipes](https://docs.nestjs.com/pipes#built-in-pipes)
+
+#### transform 함수
+- PipeTransform 구현체가 구현해야만 하는 메소드
+- 파라미터는 value와 metadata 2개
+    - value는 현재 넘겨진 argument
+    - [metadata는 아래와 같은 타입](https://docs.nestjs.com/pipes#custom-pipes)
+        ```typescript
+        export interface ArgumentMetadata {
+            type: 'body' | 'query' | 'param' | 'custom';
+            metatype?: Type<unknown>;
+            data?: string;
+        }
+        ```
+        - js에서는 object 타입일 것임
+
+#### 스키마 베이스 validation
+- 모든 타입을 다루는 generic middleware는 불가함
+    - middleware는 execution context를 모르기 때문
+    - 이게 의도됨
+- 방안 
+    1. [Object Schema Validation](https://docs.nestjs.com/pipes#object-schema-validation)
+        - zod 등 validator 이용하는 방식
+    1. [Class validator](https://docs.nestjs.com/pipes#class-validator)
+        - class-validator, class-transformer 이용하는 방식
+- [global pipe](https://docs.nestjs.com/pipes#global-scoped-pipes)
+    - DI 불가, context 밖에서 등록 됨
+    - DI하려면 `APP_PIPE`로 등록해야함.
+    
