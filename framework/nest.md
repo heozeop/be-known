@@ -188,4 +188,14 @@ unhandled exception 다뤄주는 layer
 - [global pipe](https://docs.nestjs.com/pipes#global-scoped-pipes)
     - DI 불가, context 밖에서 등록 됨
     - DI하려면 `APP_PIPE`로 등록해야함.
-    
+
+### Guard
+CanActivate interface를 구현하는 @injectable 클래스
+Authorization, Authentication에만 관심 있음
+
+#### middleware보다 나은점
+- execution context를 알고 있다.
+    - 다음에 뭐가 호출되는지 알 수 있다.
+
+#### CanActivate
+- ExecutionContext라는 하나의 인스턴스를 인자로 받음
