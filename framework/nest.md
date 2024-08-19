@@ -214,3 +214,25 @@ NestInterceptor 인터페이스를 구현하는 @Injectable 클래스
 1. Logger
 1. Aspect Interception
 
+### Custom Route Decorators
+#### Param Decorator
+- [ref](https://docs.nestjs.com/custom-decorators#param-decorators)
+- user decorator
+    ```typescript
+    import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+
+    export const User = createParamDecorator(
+        (data: unknown, ctx: ExecutionContext) => {
+            const request = ctx.switchToHttp().getRequest();
+            return request.user;
+        },
+    );
+    ```
+
+#### Working with pipes
+- [ref](https://docs.nestjs.com/custom-decorators#working-with-pipes)
+- decorator를 사용할 때 그냥 validator 넣을 수도 있음
+
+#### Decorator composition
+- [ref](https://docs.nestjs.com/custom-decorators#decorator-composition)
+- `applyDecorators`를 이용해서 여러개의 decorator를 한번에 적용
