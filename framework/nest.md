@@ -199,3 +199,18 @@ Authorization, Authentication에만 관심 있음
 
 #### CanActivate
 - ExecutionContext라는 하나의 인스턴스를 인자로 받음
+
+### Interceptor
+NestInterceptor 인터페이스를 구현하는 @Injectable 클래스
+모든 interceptor는 intercept 함수를 구현함.
+
+#### basic
+- ExecutionContext (1번 인자)
+- CallHandler (2번자인자)
+    - handle 메소드 구현하는 인터페이스
+    - next로 보통 사용하며, handle 메소드는 observable 리턴함.
+
+#### 활용 케이스
+1. Logger
+1. Aspect Interception
+
